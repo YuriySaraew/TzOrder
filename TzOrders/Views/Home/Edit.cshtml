@@ -1,0 +1,40 @@
+﻿@model TzOrders.Models.Order
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Изменение игрока</h2>
+
+@using (Html.BeginForm())
+{
+<fieldset>
+    <legend>Продажа</legend>
+
+    @Html.HiddenFor(model => model.Id)
+
+    <p>
+        Название продажи <br />
+        @Html.EditorFor(model => model.Name)
+    </p>
+
+    <p>
+        Клиент <br />
+        @Html.DropDownListFor(model => model.ContragentId, ViewBag.Contragents as SelectList)
+    </p>
+    <p>
+        Представитель огранизации <br />
+        @Html.DropDownListFor(model => model.ContactId, ViewBag.Contacts as SelectList)
+    </p>
+    <p>
+        Ответственный за продажу <br />
+        @Html.DropDownListFor(model => model.ResContactId, ViewBag.ResContacts as SelectList)
+    </p>
+    <p>
+        <input type="submit" value="Сохранить" />
+    </p>
+</fieldset>
+}
+<div>
+    @Html.ActionLink("Вернуться к продажам", "Index")
+</div>

@@ -1,0 +1,38 @@
+﻿@model TzOrders.Models.Order
+
+@{
+    ViewBag.Title = "Добавление Продажи";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Добавить продажу</h2>
+
+@using (Html.BeginForm())
+{
+<fieldset>
+
+    <p>
+        Название продажи <br />
+        @Html.EditorFor(model => model.Name)
+    </p>
+
+    <p>
+        Клиент <br />
+        @Html.DropDownListFor(model => model.ContragentId, ViewBag.Contragents as SelectList,"Не выбрано")
+    </p>
+    <p>
+        Представитель огранизации <br />
+        @Html.DropDownListFor(model => model.ContactId, ViewBag.Contacts as SelectList, "Не выбрано")
+    </p>
+    <p>
+        Ответственный за продажу <br />
+        @Html.DropDownListFor(model => model.ResContactId, ViewBag.ResContacts as SelectList, "Не выбрано")
+    </p>
+    <p>
+        <input type="submit" value="Добавить" class="btn btn-sm btn-dark" />
+    </p>
+</fieldset>
+}
+<div>
+    @Html.ActionLink("К списку продаж", "Index")
+</div>

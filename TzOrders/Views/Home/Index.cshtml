@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TzOrders.Models.Order>
+
+@{
+    ViewBag.Title = "Продажи";
+}
+
+
+<p>
+
+    <div class="btn btn-sm btn-dark">@Html.ActionLink("Добавить продажу", "Create", null, null, new { style = "color: white; font-weight: bold; text-decoration: none;" })</div>
+</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Название продажи</th>
+            <th>Клиент</th>
+            <th>Контактное лицо</th>
+            <th>Ответственный за продажу</th>
+            <th>Операции</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contragent.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contact.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResContact.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
